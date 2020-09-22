@@ -18,7 +18,9 @@ public class DetailedBeerServiceCaller {
 
 
     public DetailedBeer getDetailedBeer(String id){
-        return template.getForEntity(basicURL + id, DetailedBeer.class).getBody();
+        DetailedBeer detailedBeer = template.getForEntity(basicURL + id, DetailedBeer.class).getBody();
+        System.out.println("this what received:" + detailedBeer);
+        return detailedBeer;
     }
 
 }
