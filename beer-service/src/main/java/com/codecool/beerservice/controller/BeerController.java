@@ -37,4 +37,28 @@ public class BeerController {
         System.out.println(detailedBeer);
         return detailedBeer;
     }
+
+
+    @GetMapping("/search/{page}/{beer-name}/{food-name}/{alcohol}/{brewed-before}/{brewed-after}")
+    public String returnSearchResults(@PathVariable("beer-name") String beerName, @PathVariable("food-name") String foodName,
+                                      @PathVariable("alcohol") String alcohol, @PathVariable("brewed-before") String brewedBefore,
+                                      @PathVariable("brewed-after") String brewedAfter, @PathVariable("page") String page) throws IOException {
+        String endpoint = endPointBuilder(beerName, foodName, brewedAfter, brewedBefore, alcohol, apiBasicEndpoint);
+
+        System.out.println(endpoint);
+        return remoteURLReader.readFromUrl(endpoint);
+    }
+
+
+    private String endPointBuilder(String beerName, String foodName, String brewedAfter, String brewedBefore, String alcohol, String endpoint){
+        endpoint += "?abv_gt=" + alcohol;
+        if(!beerName.equals(" ")){
+            endpoint += "&beer_name=" + beerName;
+        }
+        if(!foodName.equals(" ")){
+            endpoint += "&food=" + foodName;
+        }
+        endpoint += "&brewed_after=" + brewedAfter + "&brewed_before=" + brewedBefore;
+        return endpoint;
+    }
 }
