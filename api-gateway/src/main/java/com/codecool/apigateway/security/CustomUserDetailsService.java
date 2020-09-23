@@ -1,7 +1,7 @@
 package com.codecool.apigateway.security;
 
-import com.codecool.moviedb.model.User;
-import com.codecool.moviedb.repository.UserRepository;
+import com.codecool.apigateway.model.User;
+import com.codecool.apigateway.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
