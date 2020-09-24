@@ -35,6 +35,7 @@ public class UserServiceCaller {
     }
 
     public List<Beer> getBeers(String username){
+        System.out.println(username);
         return template.getForEntity(basicURL2 + "/get-beers/" + username, List.class).getBody();
     }
 }

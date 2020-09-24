@@ -19,14 +19,14 @@ public class Beer {
     @Id
     private Long id;
 
-    private String img;
+    private String image_url;
 
     @Column(nullable = false)
     private String name;
 
-    private String brewed_Date;
+    private String first_brewed;
 
-    private Float alcohol_ratio;
+    private Float abv;
 
     private String username;
 }

@@ -29,15 +29,16 @@ public class BeerServiceCaller {
     }
 
     public String saveBeer(@RequestBody Map<String, Object> reqBody) {
-        Beer beer = Beer.builder().alcohol_ratio(Float.valueOf(reqBody.get("alcohol").toString()))
+        Beer beer = Beer.builder().abv(Float.valueOf(reqBody.get("alcohol").toString()))
                 .id(Long.valueOf(reqBody.get("id").toString())).name((String) reqBody.get("name"))
-                .brewed_Date((String) reqBody.get("brewedDate")).img((String) reqBody.get("img"))
+                .first_brewed((String) reqBody.get("brewedDate")).image_url((String) reqBody.get("img"))
                 .username((String)reqBody.get("username")).build();
         System.out.println("api gateway: controller, " + beer);
         return template.postForEntity(basicUrl + "favorites/save", beer, String.class).getBody();
     }
 
     public List<Beer> getBeers(String username){
-        return template.getForEntity(basicUrl + "/favorites/get-beers/" + username, List.class).getBody();
+        System.out.println(username);
+        return template.getForEntity(basicUrl + "favorites/get-beers/" + username, List.class).getBody();
     }
 }

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/favorites")
@@ -18,12 +17,12 @@ public class SaveBeerController {
 
     @PostMapping("/save")
     public String saveBeer(@RequestBody Beer beer) {
-        System.out.println("Beer-service: controller, " + beer);
         return userServiceCaller.saveBeer(beer);
     }
 
-    @GetMapping("/get/{username}")
+    @GetMapping("/get-beers/{username}")
     public List<Beer> getBeers(@PathVariable String username){
+        System.out.println(username);
         return userServiceCaller.getBeers(username);
     }
 }

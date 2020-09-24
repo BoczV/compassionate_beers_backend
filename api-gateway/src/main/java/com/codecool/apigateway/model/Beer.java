@@ -13,13 +13,13 @@ public class Beer {
 
     private Long id;
 
-    private String img;
+    private String image_url;
 
     private String name;
 
-    private String brewed_Date;
+    private String first_brewed;
 
-    private Float alcohol_ratio;
+    private Float abv;
 
     private String username;
 }

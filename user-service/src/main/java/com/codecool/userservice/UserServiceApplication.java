@@ -56,9 +56,10 @@ public class UserServiceApplication {
 			System.out.println(user);
 			userRepository.save(user);
 
-			Beer beer = Beer.builder().alcohol_ratio((float) 1.5)
+			Beer beer = Beer.builder().abv
+					((float) 1.5)
 					.id(1L).name("Buzz")
-					.brewed_Date("10-2007").img("valami")
+					.first_brewed("10-2007").image_url("valami")
 					.username("Isti").build();
 			beerRepository.save(beer);
 

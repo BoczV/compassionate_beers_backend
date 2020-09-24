@@ -23,6 +23,7 @@ public class BeerController {
 
     @GetMapping("/get-beers/{username}")
     public List<Beer> getBeers(@PathVariable String username){
+        System.out.println(username);
         return beerServiceCaller.getBeers(username);
     }
 }
