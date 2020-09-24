@@ -1,4 +1,4 @@
-package com.codecool.apigateway.controller;
+package com.codecool.userservice.controller;
 
 import org.json.JSONException;
 import org.json.JSONObject;

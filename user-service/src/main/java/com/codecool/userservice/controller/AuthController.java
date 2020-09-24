@@ -1,9 +1,9 @@
-package com.codecool.apigateway.controller;
+package com.codecool.userservice.controller;
 
 
-import com.codecool.apigateway.model.User;
-import com.codecool.apigateway.security.JwtTokenServices;
-import com.codecool.apigateway.service.BeerServiceCaller;
+import com.codecool.userservice.model.User;
+import com.codecool.userservice.repository.UserRepository;
+import com.codecool.userservice.security.JwtTokenServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,7 +34,7 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     @Autowired
-    BeerServiceCaller beerServiceCaller;
+    UserRepository userRepository;
 
     public AuthController(AuthenticationManager authenticationManager, JwtTokenServices jwtTokenServices) {
         this.authenticationManager = authenticationManager;
@@ -72,7 +72,7 @@ public class AuthController {
         String email = data.get("email").toString();
         try {
             User newUser = User.builder().userName(username).password(passwordEncoder.encode(password)).email(email).roles(Arrays.asList("ROLE_USER")).build();
-            beerServiceCaller.saveUser(newUser);
+            userRepository.save(newUser);
             String token = jwtTokenServices.createToken(username, Arrays.asList("ROLE_USER"));
 
             Map<Object, Object> model = new HashMap<>();
