@@ -13,14 +13,14 @@ public class UserServiceCaller {
     @Autowired
     private RestTemplate template;
 
-    private final String basicURL = "http://userservice/userservice";
+    private final String basicURL = "http://userservice/user";
 
 
     public String saveUser(User user) {
-        return template.postForEntity(basicURL + "/user/save", user, String.class).getBody();
+        return template.postForEntity(basicURL + "/save", user, String.class).getBody();
     }
 
     public User getUser(String username){
-        return template.getForEntity(basicURL + "/user/get/" + username, User.class).getBody();
+        return template.getForEntity(basicURL + "/get/" + username, User.class).getBody();
     }
 }
