@@ -1,6 +1,8 @@
 package com.codecool.userservice;
 
+import com.codecool.userservice.model.Beer;
 import com.codecool.userservice.model.User;
+import com.codecool.userservice.repository.BeerRepository;
 import com.codecool.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +29,9 @@ public class UserServiceApplication {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private BeerRepository beerRepository;
+
 	private final PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
 	public static void main(String[] args) {
@@ -50,6 +55,13 @@ public class UserServiceApplication {
 			user.setRoles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"));
 			System.out.println(user);
 			userRepository.save(user);
+
+			Beer beer = Beer.builder().alcohol_ratio((float) 1.5)
+					.id(1L).name("Buzz")
+					.brewed_Date("10-2007").img("valami")
+					.username("Isti").build();
+			beerRepository.save(beer);
+
 		};
 
 	}

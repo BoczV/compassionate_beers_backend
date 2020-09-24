@@ -1,4 +1,4 @@
-package com.codecool.userservice.model;
+package com.codecool.beerservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,15 +13,12 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
 public class Beer {
 
-    @Id
     private Long id;
 
     private String img;
 
-    @Column(nullable = false)
     private String name;
 
     private String brewed_Date;

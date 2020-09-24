@@ -29,10 +29,6 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @Singular
-    @ElementCollection
-    private Set<Integer> beerIds = new HashSet<>();
-
     // roles of the user (ADMIN, USER,..)
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
