@@ -1,13 +1,12 @@
 package com.codecool.userservice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -20,8 +19,17 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    private String username;
+    @Column(nullable = false, unique = true)
+    private String userName;
+
+    @Column(nullable = false)
     private String password;
 
+    @ElementCollection
+    private Set<Integer> beerIds = new HashSet<>();
 
+    // roles of the user (ADMIN, USER,..)
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Builder.Default
+    private List<String> roles = new ArrayList<>();
 }
