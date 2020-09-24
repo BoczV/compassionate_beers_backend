@@ -21,6 +21,7 @@ public class DetailedBeer {
     private String img_url;
     private String tagline;
     private String yeast;
+    private String description;
     private List<String> foodPairing;
     private List<Hop> hops;
     private List<Malt> malts;
