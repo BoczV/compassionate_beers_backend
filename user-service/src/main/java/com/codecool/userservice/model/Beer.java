@@ -27,8 +27,8 @@ public class Beer {
 
     private Float alcohol_ratio;
 
-    //@JoinColumn(name = "user_name")
-    @Column(nullable = false)
     @ManyToOne
+    //@JoinColumn(name = "userName")
+    @Column(nullable = false)
     private User user;
 }
