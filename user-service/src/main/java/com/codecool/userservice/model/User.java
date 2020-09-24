@@ -29,9 +29,8 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @Singular
-    @ElementCollection
-    private Set<Integer> beerIds = new HashSet<>();
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Set<Beer> beers;
 
     // roles of the user (ADMIN, USER,..)
     @ElementCollection(fetch = FetchType.EAGER)
