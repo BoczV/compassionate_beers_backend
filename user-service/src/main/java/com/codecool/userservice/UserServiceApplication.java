@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -24,6 +26,8 @@ public class UserServiceApplication {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	private final PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserServiceApplication.class, args);
@@ -41,7 +45,7 @@ public class UserServiceApplication {
 	@Profile("production")
 	public CommandLineRunner init(){
 		return args -> {
-			String encodePassword = "ugyi";
+			String encodePassword = passwordEncoder.encode("ugyi");
 			User user = User.builder().userName("Isti").password(encodePassword).email("isti@gmail.com").build();
 			user.setRoles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"));
 			System.out.println(user);

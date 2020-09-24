@@ -15,7 +15,7 @@ public class BeerServiceCaller {
     @Autowired
     private RestTemplate template;
 
-    private final String basicUrl = "http://beerservice/beerservice";
+    private final String basicUrl = "http://beerservice/";
 
     public String saveUser(User user) {
         return template.postForEntity(basicUrl + "/user/save", user, String.class).getBody();
