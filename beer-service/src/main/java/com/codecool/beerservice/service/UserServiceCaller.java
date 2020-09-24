@@ -1,6 +1,6 @@
 package com.codecool.beerservice.service;
 
-import com.codecool.beerservice.model.DetailedBeer;
+import com.codecool.beerservice.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,11 @@ public class UserServiceCaller {
     private final String basicURL = "http://userservice/userservice";
 
 
-    public String saveUser(Object object) {
-        return template.postForEntity(basicURL + "/save-user", object, String.class).getBody();
+    public String saveUser(User user) {
+        return template.postForEntity(basicURL + "/user/save", user, String.class).getBody();
+    }
+
+    public User getUser(String username){
+        return template.getForEntity(basicURL + "/user/get/" + username, User.class).getBody();
     }
 }

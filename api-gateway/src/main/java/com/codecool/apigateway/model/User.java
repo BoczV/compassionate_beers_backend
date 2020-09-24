@@ -1,8 +1,10 @@
-package com.codecool.userservice.model;
+package com.codecool.apigateway.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,29 +14,18 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
 public class User {
 
-    @Id
-    @GeneratedValue
     private Long id;
 
-    @Column(nullable = false, unique = true)
     private String userName;
 
-    @Column(nullable = false)
     private String password;
 
-
-    @Column(nullable = false)
     private String email;
 
-    @Singular
-    @ElementCollection
     private Set<Integer> beerIds = new HashSet<>();
 
-    // roles of the user (ADMIN, USER,..)
-    @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
 }
