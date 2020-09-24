@@ -64,6 +64,7 @@ public class DetailedBeerController {
                 .name(beerJson.get("name").getAsString())
                 .tagline(beerJson.get("tagline").getAsString())
                 .yeast(beerJson.get("ingredients").getAsJsonObject().get("yeast").getAsString())
+                .description(beerJson.get("description").getAsString())
                 .hops(hops)
                 .malts(malts)
                 .build();
