@@ -34,7 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .anyRequest().permitAll()
+                .antMatchers("/beerservice/beer/**").permitAll()
+                .antMatchers("/auth/sign-in").permitAll()
+                .antMatchers("/auth/registration").permitAll()
+                .antMatchers("/favorites/**").authenticated()
+                .antMatchers("/profile/**").authenticated()
+                .antMatchers("/userservice/favorites/del/**").authenticated()
+                .anyRequest().denyAll()
                 .and()
                 .addFilterBefore(new JwtTokenFilter(jwtTokenServices), UsernamePasswordAuthenticationFilter.class);
     }
