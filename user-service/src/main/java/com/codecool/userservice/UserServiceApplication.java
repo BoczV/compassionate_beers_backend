@@ -57,9 +57,9 @@ public class UserServiceApplication {
 			userRepository.save(user);
 
 			Beer beer = Beer.builder().abv
-					((float) 1.5)
+					((float) 4.5)
 					.id(1L).name("Buzz")
-					.first_brewed("10-2007").image_url("valami")
+					.first_brewed("09/2007").image_url("https://images.punkapi.com/v2/keg.png")
 					.username("Isti").build();
 			beerRepository.save(beer);
 
