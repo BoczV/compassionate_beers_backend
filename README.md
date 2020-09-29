@@ -26,3 +26,5 @@ You can find more information in the frontend git link: https://github.com/BoczV
 We used Spring Boot framework to create our backend side with Hibernate. Our backend has a micro-service based architecture with multiple services.
 
 You can find the blueprint of our structure here:
+
+![alt text](https://github.com/BoczV/compassionate_beers_backend/blob/master/./api-gateway/src/main/resources/microserviceStructure.png?raw=true)
