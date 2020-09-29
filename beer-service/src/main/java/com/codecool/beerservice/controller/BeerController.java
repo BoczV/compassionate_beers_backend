@@ -44,8 +44,6 @@ public class BeerController {
                                       @PathVariable("alcohol") String alcohol, @PathVariable("brewed-before") String brewedBefore,
                                       @PathVariable("brewed-after") String brewedAfter, @PathVariable("page") String page) throws IOException {
         String endpoint = endPointBuilder(beerName, foodName, brewedAfter, brewedBefore, alcohol, apiBasicEndpoint);
-
-        System.out.println(endpoint);
         return remoteURLReader.readFromUrl(endpoint);
     }
 
